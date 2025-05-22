@@ -1,0 +1,7 @@
+{
+  "name": "validarEdad",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
