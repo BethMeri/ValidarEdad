@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Registro de Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+    <ion-item>
+      <ion-label position="floating">Fecha de Nacimiento</ion-label>
+      <ion-datetime formControlName="fechaNacimiento" display-format="DD/MM/YYYY"></ion-datetime>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-text color="danger" *ngIf="edadInvalida">
+      <p>Debes tener al menos 18 años para registrarte.</p>
+    </ion-text>
+
+    <ion-button expand="full" type="submit" [disabled]="registroForm.invalid || edadInvalida">
+      Registrarse
+    </ion-button>
+  </form>
 </ion-content>
